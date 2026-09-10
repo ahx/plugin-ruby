@@ -136,16 +136,16 @@ listener =
           end
 
         if response
-          socket.write(JSON.fast_generate(response.force_encoding("UTF-8")))
+          socket.write(JSON.generate(response.force_encoding("UTF-8")))
         else
           socket.write("{ \"error\": true }")
         end
       rescue SyntaxTree::Parser::ParseError => error
         loc = { start: { line: error.lineno, column: error.column } }
-        socket.write(JSON.fast_generate(error: error.message, loc: loc))
+        socket.write(JSON.generate(error: error.message, loc: loc))
       rescue StandardError => error
         begin
-          socket.write(JSON.fast_generate(error: error.message))
+          socket.write(JSON.generate(error: error.message))
         rescue Errno::EPIPE
           # Do nothing, the pipe has been closed by the parent process so we
           # don't actually care about writing to it anymore.
@@ -163,5 +163,5 @@ listener =
     end
   end
 
-File.write(connection_filepath, JSON.fast_generate(connection_information))
+File.write(connection_filepath, JSON.generate(connection_information))
 listener.join
