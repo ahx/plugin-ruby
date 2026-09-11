@@ -283,7 +283,21 @@ describe("rbs", () => {
     });
   });
 
-  describeCases("plain", (source) => `T: ${source}`);
+  describe("plain", () => {
+    testCases("plain", (source) => `T: ${source}`);
+
+    ["void", "self", "instance", "class"].forEach((source) => {
+      test(source, () => {
+        const content = rbs(`
+        class T
+          def t: -> ${source}
+        end
+      `);
+
+        return expect(content).toMatchFormat();
+      });
+    });
+  });
 
   describe("proc", () => {
     testCases("proc", (source) => `T: ${source}`);

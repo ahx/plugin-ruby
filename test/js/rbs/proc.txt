@@ -1,9 +1,9 @@
 ^-> void
 ^(untyped) -> void
-^(untyped, void) -> void
-^(untyped x, void _y) -> void
-^(untyped x, ?void, ?nil y) -> void
-^(untyped x, ?void, ?nil y, *untyped a) -> void
+^(untyped, bool) -> void
+^(untyped x, bool _y) -> void
+^(untyped x, ?bool, ?nil y) -> void
+^(untyped x, ?bool, ?nil y, *untyped a) -> void
 ^(untyped x, *untyped a, nil z) -> void
 ^(foo: untyped, _bar: nil bar) -> void
 ^(?_bar: nil, **untyped rest) -> void

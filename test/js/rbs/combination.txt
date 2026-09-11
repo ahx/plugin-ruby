@@ -1,5 +1,5 @@
-untyped | void | nil
-untyped & void & nil
-untyped | void & nil
-untyped & void | nil
-untyped & (void | nil)
+untyped | bool | nil
+untyped & bool & nil
+untyped | bool & nil
+untyped & bool | nil
+untyped & (bool | nil)

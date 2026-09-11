@@ -1,5 +1,5 @@
 untyped?
 ^-> untyped?
-untyped | void?
+untyped | bool?
 :foo??
 :foo!?
